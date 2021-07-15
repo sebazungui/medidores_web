@@ -10,7 +10,7 @@
 namespace MedidoresWeb {
     
     
-    public partial class RegistrarPunto {
+    public partial class ActualizarPunto {
         
         /// <summary>
         /// Control mensajeLbl.
@@ -31,15 +31,6 @@ namespace MedidoresWeb {
         protected global::System.Web.UI.WebControls.TextBox idTxt;
         
         /// <summary>
-        /// Control idCV.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator idCV;
-        
-        /// <summary>
         /// Control tipoRbl.
         /// </summary>
         /// <remarks>
@@ -56,24 +47,6 @@ namespace MedidoresWeb {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox capacidadTxt;
-        
-        /// <summary>
-        /// Control RequiredFieldValidator2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
-        
-        /// <summary>
-        /// Control RegularExpressionValidator1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
         
         /// <summary>
         /// Control fechaTxt.
@@ -103,12 +76,12 @@ namespace MedidoresWeb {
         protected global::System.Web.UI.WebControls.Calendar Calendar1;
         
         /// <summary>
-        /// Control ingresarBtn.
+        /// Control actualizarBtn.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ingresarBtn;
+        protected global::System.Web.UI.WebControls.Button actualizarBtn;
     }
 }

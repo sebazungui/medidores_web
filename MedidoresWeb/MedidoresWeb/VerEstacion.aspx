@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="Contenido" runat="server">
 
-    <div class="mt-5">
+    <div class="col-8 mt-5 mx-auto">
 
         <asp:GridView ID="estacionesGrid" runat="server"
             AutoGenerateColumns="false" CssClass="table table-hover text-center" OnRowCommand="estacionesGrid_RowCommand"

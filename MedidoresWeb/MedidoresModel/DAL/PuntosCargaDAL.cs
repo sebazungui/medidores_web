@@ -26,6 +26,12 @@ namespace MedidoresModel
             puntos.Remove(punto);
         }
 
+        public PuntoCarga GetPunto(int id)
+        {
+            return puntos.Find(p => p.Id == id);
+        }
+
+
         public List<PuntoCarga> GetAll(int tipo)
         {
             return puntos.FindAll(p => p.Tipo == tipo);
@@ -33,8 +39,9 @@ namespace MedidoresModel
 
         public void Update(PuntoCarga p)
         {
-   
-
+            puntos.Single(pto => pto.Id == p.Id).CapacidadMaxima = p.CapacidadMaxima;
+            puntos.Single(pto => pto.Id == p.Id).Tipo = p.Tipo;
+            puntos.Single(pto => pto.Id == p.Id).FechaVencimiento = p.FechaVencimiento;
         }
     }
 }

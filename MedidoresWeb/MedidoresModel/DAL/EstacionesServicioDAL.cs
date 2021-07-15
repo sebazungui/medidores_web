@@ -20,6 +20,11 @@ namespace MedidoresModel
             return estaciones;
         }
 
+        public EstacionServicio GetEstacion(int id)
+        {
+            return estaciones.Find(es => es.Id == id);
+        }
+
         public void Remove(int id)
         {
             EstacionServicio estacionServicio = estaciones.Find(es => es.Id == id);

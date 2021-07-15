@@ -8,15 +8,23 @@ using System.Web.UI.WebControls;
 
 namespace MedidoresWeb
 {
-    public partial class RegistrarPunto : System.Web.UI.Page
+    public partial class ActualizarPunto : System.Web.UI.Page
     {
         PuntosCargaDAL puntosCargaDAL = new PuntosCargaDAL();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
                 Calendar1.Visible = false;
+                String id = Request.QueryString["id"];
+                idTxt.Text = id;
+                int idBuscar = Convert.ToInt32(id);
+                PuntoCarga pto = puntosCargaDAL.GetPunto(idBuscar);
+                capacidadTxt.Text = pto.CapacidadMaxima.ToString();
+                fechaTxt.Text = pto.FechaVencimiento;
+                tipoRbl.SelectedValue = pto.Tipo.ToString();
             }
         }
 
@@ -33,14 +41,6 @@ namespace MedidoresWeb
             Calendar1.Attributes.Add("style", "position:absolute");
         }
 
-        private void limpiar()
-        {
-            idTxt.Text = "";
-            tipoRbl.SelectedIndex = 0;
-            capacidadTxt.Text = "";
-            fechaTxt.Text = "";
-        }
-
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
             fechaTxt.Text = Calendar1.SelectedDate.ToString("dd/MM/yyyy");
@@ -55,7 +55,7 @@ namespace MedidoresWeb
             }
         }
 
-        protected void ingresarBtn_Click(object sender, EventArgs e)
+        protected void actualizarBtn_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
             {
@@ -70,38 +70,13 @@ namespace MedidoresWeb
                 p.CapacidadMaxima = capacidad;
                 p.FechaVencimiento = fecha;
 
-                new PuntosCargaDAL().Add(p);
-
-                mensajeLbl.Text = "Punto de carga agregado con éxito";
-                limpiar();
+                new PuntosCargaDAL().Update(p);
+                
+                Response.Redirect("VerPunto.aspx");
 
             }
         }
 
-        protected void idCV_ServerValidate(object source, ServerValidateEventArgs args)
-        {
-            String id = idTxt.Text.Trim();
 
-            if (id == string.Empty)
-            {
-                idCV.ErrorMessage = "Debe ingresar id";
-                args.IsValid = false;
-            }
-            else
-            {
-                if (puntosCargaDAL.GetPunto(Convert.ToInt32(id)) != null)
-                {
-                    idCV.ErrorMessage = "Id ya existe en el sistema";
-                    args.IsValid = false;
-                }
-                else
-                {
-                    args.IsValid = true;
-                }
-
-
-            }
-
-        }
     }
 }

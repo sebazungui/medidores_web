@@ -10,6 +10,8 @@ namespace MedidoresWeb
 {
     public partial class RegistrarEstacion : System.Web.UI.Page
     {
+        EstacionesServicioDAL estacionServicioDAL = new EstacionesServicioDAL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -59,9 +61,21 @@ namespace MedidoresWeb
                 idCV.ErrorMessage = "Debe ingresar id";
                 args.IsValid = false;
             }
+            else
+            {
+                if (estacionServicioDAL.GetEstacion(Convert.ToInt32(id)) != null)
+                {
+                    idCV.ErrorMessage = "Id ya existe en el sistema";
+                    args.IsValid = false;
+                }
+                else
+                {
+                    args.IsValid = true;
+                }
+
+            }
+
 
         }
-
-
     }
 }

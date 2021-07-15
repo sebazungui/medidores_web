@@ -22,24 +22,28 @@
                         AutoPostBack="true" OnCheckedChanged="todosChx_CheckedChanged" Text="Ver Todos" />
 
                 </div>
-
-                <asp:GridView ID="puntosGrid" runat="server"
-                    AutoGenerateColumns="false" CssClass="table table-hover text-center" OnRowCommand="puntosGrid_RowCommand"
-                    EmptyDataText="No hay estaciones en el sistema">
-                    <Columns>
-                        <asp:BoundField HeaderText="Id Punto" DataField="Id" />
-                        <asp:BoundField HeaderText="Tipo" DataField="TipoTxt" />
-                        <asp:BoundField HeaderText="Capacidad Máxima" DataField="CapacidadMaxima" />
-                        <asp:BoundField HeaderText="Fecha Vencimiento" DataField="FechaVencimiento" />
-                        <asp:TemplateField HeaderText="Acciones">
-                            <ItemTemplate>
-                                <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-danger"
-                                    CommandName="eliminar"
-                                    CommandArgument='<%# Eval("Id")%>' />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                    </Columns>
-                </asp:GridView>
+                <div class="col-8 mt-5 mx-auto">
+                    <asp:GridView ID="puntosGrid" runat="server"
+                        AutoGenerateColumns="false" CssClass="table table-hover text-center" OnRowCommand="puntosGrid_RowCommand"
+                        EmptyDataText="No hay estaciones en el sistema">
+                        <Columns>                            
+                                <asp:BoundField HeaderText="Id Punto" DataField="Id" />
+                                <asp:BoundField HeaderText="Tipo" DataField="TipoTxt" />
+                                <asp:BoundField HeaderText="Capacidad Máxima" DataField="CapacidadMaxima" />
+                                <asp:BoundField HeaderText="Fecha Vencimiento" DataField="FechaVencimiento" />
+                                <asp:TemplateField HeaderText="Acciones">                            
+                            <itemtemplate>
+                                    <asp:Button ID="Button1" runat="server" Text="Eliminar" CssClass="btn btn-danger"
+                                        CommandName="eliminar"
+                                        CommandArgument='<%# Eval("Id")%>' />
+                                    <asp:Button ID="Button2" runat="server" Text="Editar" CssClass="btn btn-primary"
+                                        CommandName="editar"
+                                        CommandArgument='<%# Eval("Id")%>' />
+                                </itemtemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
             </div>
         </ContentTemplate>
     </asp:UpdatePanel>
